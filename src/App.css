@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0 ;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+}
+.login-form{
+  height: 500px;
+}
+.navigation {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+  background: white;
+  border-bottom: 2px solid gray;
+}
+.navigation .nav-logo {
+  padding: 10px;
+}
+.navigation .nav-logo .nav-logo-art {
+  font-weight: bold;
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+}
+.navigation .nav-logo .nav-logo-gag {
+  top: 10px;
+  font-size: 1rem;
+}
+.nav-bar > li > a {
+  text-decoration: none;
+  color: black;
+  line-height: 1;
+  padding: 33px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.text-alert {
+  color: red;
+}
+.text-success {
+  color: green;
+}
+.icon-padding {
+  padding: 10px;
+}
+.background {
+  height: 100%;
+  display: block;
+  background-image:url('https://i.redd.it/sxwucxgele6z.jpg');
+  background-size: cover;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+  -webkit-filter: blur(5px);
+  -o-filter: blur(5px);
+  filter: blur(5px);
+  transform: scale(1.03);
+}
+.content{
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
