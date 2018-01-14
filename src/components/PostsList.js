@@ -8,10 +8,10 @@ class PostsList extends Component {
     renderPostsList = () => {
         var postsList = this.props.data.posts.map((post) => {
             return(
-                <div key={post.post_id}> 
-                    <Link to={`${this.props.routeProps.match.url}posts/${post.post_id}`}>
-                        <PostsItem getComments={this.props.commentHandler} posts={post} />
-                    </Link>
+                <div className="row" key={post.post_id}> 
+                    <div className="col-2"></div>
+                        <PostsItem getComments={this.props.commentHandler} link={this.props.routeProps.match.url} posts={post} />
+                    <div className="col-2"></div>
                 </div>
             )
         })
@@ -20,7 +20,7 @@ class PostsList extends Component {
     
     render(){
         return(
-            <div>
+            <div className="container">
                 {this.renderPostsList()}
             </div>
         )

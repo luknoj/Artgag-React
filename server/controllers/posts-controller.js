@@ -7,7 +7,6 @@ var AWS_ACCESS_ID_KEY = "";
 var AWS_SECRET_ACCESS_KEY = "";
 
 module.exports.uploadPost = function (req, res) {
-  // console.log(req.body.content);
   var file = req.body.content;
   var buffer = new Buffer(file.base64.replace(/^data:image\/\w+;base64,/, ""), 'base64');
   var bucketName = ''; // project-tas
@@ -57,8 +56,7 @@ module.exports.uploadPost = function (req, res) {
         }) 
     }
   });
-};
-
+}
 module.exports.getPosts = function (req,res){
   con.query('SELECT * FROM articles LIMIT 10', function (error,results,fields){
     if(error){
@@ -107,7 +105,6 @@ module.exports.getPostComment = function(req, res){
     }
   });
 };
-
 module.exports.sendPostComment = function (req, res) {
   var date = new Date();
   comment = {

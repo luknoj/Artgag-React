@@ -12,12 +12,12 @@ app.use(bodyParser.urlencoded({ limit: "1MB", extended : true }));
 app.use(bodyParser.json({ limit: "1MB" }));
 
 
-// app.post('/api/jwtTest', authController.authTest);
+app.post('/api/jwtTest', authController.authTest);
 
 app.post('/api/user/register', registerController.register);
 app.post('/api/user/login', loginController.login);
-app.post('/api/post/:postId',authController.auth, postsController.sendPostComment);
 app.post('/api/post/upload', authController.auth, postsController.uploadPost);
+app.post('/api/post/:postId',authController.auth, postsController.sendPostComment);
 app.post('/api/post/:postId/:commentId', authController.auth, postsController.deleteComment);
 
 app.get('/api/posts', postsController.getPosts);

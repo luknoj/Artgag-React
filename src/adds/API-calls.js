@@ -43,10 +43,24 @@ export default class API {
   };
 
   static async registerUser(login, email, password){
-    return axios.post(`${URL}/api/register`, {login, email, password})
+    return axios.post(`${URL}/api/user/register`, {login, email, password})
     .then((response) => {
       return response;
     })
-  }
+  };
+
+  static async uploadPost(data){
+    return axios.post(`${URL}/api/post/upload`, data)
+    .then((response) => { 
+      return response;
+    })
+  };
+
+  static async authenticate(token){
+    return axios.post(`${URL}/api/jwtTest`, token)
+    .then((response) => {
+      return response;
+    })
+  };
 
 }

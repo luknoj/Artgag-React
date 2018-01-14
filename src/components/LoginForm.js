@@ -16,30 +16,32 @@ class LoginForm extends Component {
         if(this.props.data.token){
             return <Redirect to={from} />
         }
-        return (
-            <div className="login-form grid-x grid-padding-x align-center-middle text-center">
-              <div className="cell medium-6">
-                <h1>Login form</h1>
-                  <form onSubmit={this.props.loginHandle}>
-                    <label className="text-left">
-                      Login
-                      <input type="text" placeholder="Login" onChange={this.retriveLogin}/>
-                       </label>
-                       <label className="text-left">
-                        Password
-                        <input type="password" placeholder="Password" onChange={this.retrivePassword}/>
-                       </label> 
-                        <button type="submit">Submit</button>
-                  </form>
-                  {/* {this.props.data.message.length > 0 ?
-                    <p className="text-alert" >{this.props.data.message}</p>
-                  :
-                    <p></p>
-                } */}
-                </div>
-            </div>            
-        );
-    }
+    return (
+      <div className="container text-center">
+        <h1 className="gap-bottom-md">Login form</h1>
+          <form onSubmit={this.props.loginHandle}>
+            <div className="form-group row justify-content-center">
+              <label className="text-left form-label-md col-1 col-form-label">Login</label>
+              <div className="col-3">
+                <input className="form-control" type="text" placeholder="Login" onChange={this.retriveLogin}/>
+              </div>
+            </div>
+            <div className="form-group row justify-content-center">
+              <label className="text-left form-label-md col-1 col-form-label">Password</label>
+              <div className="col-3">
+                <input className="form-control" type="password" placeholder="Password" onChange={this.retrivePassword}/>
+              </div>
+            </div>
+            <button className="btn btn-primary" type="submit">Submit</button>
+          </form>
+          {/* {this.props.data.message.length > 0 ?
+          <p className="text-alert" >{this.props.data.message}</p>
+          :
+          <p></p>
+          } */}
+      </div>            
+    );
+  }
 }
 
 export default LoginForm;

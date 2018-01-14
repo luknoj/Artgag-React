@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import API from '../adds/API-calls';
 
 class UploadForm extends Component {
   constructor(props){
@@ -13,9 +14,9 @@ class UploadForm extends Component {
     }
   }
   componentDidMount(){
-    axios.post('http://localhost:8000/api/jwtTest', this.props.token)
-    .then((res) => {
-      if(!res.data.status){
+    API.authenticate(this.props.token)
+    .then((response) => {
+      if(!response.data.status){
         <Redirect to='/login'/>
       }
     })
@@ -32,24 +33,24 @@ class UploadForm extends Component {
         base64: reader.result,
         // file: this.state.file,
       };
-    var data = {
-      content: fileInfo,
-      title: this.state.title,
-      token: this.props.token,
-      date: new Date()
-    }  
-    axios.post('http://localhost:8000/api/upload', data)
-    .then((res) => { 
-      this.setState({ response: res });
-      this.props.fetchPosts();
-      // console.log(res.data.req.content.base64);
-    })
+      var data = {
+        content: fileInfo,
+        title: this.state.title,
+        token: this.props.token,
+        date: new Date()
+      }  
+      API.uploadPost(data)
+      .then((result) => {
+        console.log(result);
+        this.setState({ result });
+      })
     };
   }
   getFile = (e) => {
     this.setState({ file: e.target.files[0] });
   }
   render(){
+   console.log(this.props.token);
     return (
       <div className=" grid-x grid-padding-x align-center-middle text-center">
         <div className="cell medium-6">
@@ -62,7 +63,7 @@ class UploadForm extends Component {
               Choose a file to Upload
               <input type="file" onChange={this.getFile} name="image" id=""/>
             </label>
-            <button type="submit">Upload</button>
+            <button type="submit" className="upload-btn" >Upload</button>
           </form>
         </div>
       </div>

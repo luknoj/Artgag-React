@@ -57,25 +57,29 @@ class SinglePost extends Component {
       var transformedDate = (new Date(comment.date)).toLocaleDateString();
       
       return (
-        <div key={comment.comment_id} className="card" >
+        <div key={comment.comment_id} className="card post-item" >
             { this.props.data.userId == comment.user_id ?
-            <div className="grid-x card-divider">
-              <p className="cell medium-6 text-left" >{comment.user_name} ID: {comment.comment_id}</p>
-              <p className="cell medium-5 text-right" >{transformedDate}</p>
-              <p className="cell medium-1 text-right" >
-                <button className="icon-padding" onClick={() => this.deleteComment(comment.comment_id) }>
-                  <i className="fi-trash"/>
-                </button>
-              </p>
+            <div className="card-header">
+              <div className="row">
+                <p className="text-left col-5" >{comment.user_name} ID: {comment.comment_id}</p>
+                <p className="text-right col-5" >{transformedDate}</p>
+                <p className="text-right col-2" >
+                  <button className="icon-padding" onClick={() => this.deleteComment(comment.comment_id) }>
+                    <i className="fi-trash"/>
+                  </button>
+                </p>
+              </div>
             </div>
             :
-            <div className="grid-x card-divider">
-              <p className="cell medium-6 text-left" >{comment.user_name} ID: {comment.comment_id}</p>
-              <p className="cell medium-6 text-right" >{transformedDate}</p>
+            <div className="card-header">
+              <div className="row">
+                <p className="text-left col-6" >{comment.user_name} ID: {comment.comment_id}</p>
+                <p className="text-right col-6" >{transformedDate}</p>
+              </div>
             </div>
           }
             
-          <div className="card-section">
+          <div className="card-block">
             <p>{comment.content}</p>
           </div>
          </div>  
@@ -91,35 +95,47 @@ class SinglePost extends Component {
       if(this.state.post){
     return(
       
-        <div className="grid-x grid-padding-x align-center-middle text-center" >
-          <div className="cell medium-6">
-            <h3>{this.state.post.title}</h3>
-            <img src={this.state.post.content} alt={this.state.post.title} />
-            <div>
-              {this.renderComments()}
-            </div>
-            {this.props.data.token ?
-            <div>
-              <form onSubmit={this.postComment}>
-                <input type="text" onChange={(e) => { this.setState({ content: e.target.value })}} required/>
-                <button type="submit">Add comment</button>
-              </form>
-            </div> 
-            :
-            <div>
-              <h3>Please login if you want to comment!</h3>
-            </div>
-          }
-          {
-            this.state.message != null ?
-              <div>
-                <p className="text-success"><b>{this.state.message}</b></p>
+        <div className="container" >
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col-8 justify-content-center">
+              <div className="card post-item">
+                <div className="card-header">
+                  <h3>{this.state.post.title}</h3>
+                </div>
+                <div className="card-block">
+                  <img src={this.state.post.content} alt={this.state.post.title} />
+                </div>
               </div>
-              :
-              <div>
-                <p className="text-alert"><b>{this.state.message}</b></p>
-              </div>
-          }  
+                             {this.props.data.token ?
+                <div className="" >
+                  <form className="form-inline" onSubmit={this.postComment}>
+                    <div className="form-group col-8">
+                      <input className="form-control" type="text" onChange={(e) => { this.setState({ content: e.target.value })}} required/>
+                    </div>
+                    <button className="btn btn-primary" type="submit">Add comment</button>
+                  </form>
+                </div> 
+                :
+                <div>
+                  <h3 className="text-center" >Please login if you want to comment!</h3>
+                </div>
+              }
+              {
+                this.state.message != null ?
+                  <div>
+                    <p className="text-success"><b>{this.state.message}</b></p>
+                  </div>
+                  :
+                  <div>
+                    <p className="text-alert"><b>{this.state.message}</b></p>
+                  </div>
+              }
+                <div>
+                  {this.renderComments()}
+                </div>
+            </div>  
+            <div className="col-2"></div>
           </div>
         </div>
     )}

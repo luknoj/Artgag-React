@@ -1,0 +1,48 @@
+@import './css/navigation.scss';
+@import './css/main-page.scss';
+@import './css/helpers.scss';
+
+* {
+  margin: 0;
+  padding: 0 ;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+}
+.login-form{
+  height: 500px;
+}
+
+.text-alert {
+  color: red;
+}
+.text-success {
+  color: green;
+}
+.background {
+  height: 100%;
+  display: block;
+  background-image:url('https://i.redd.it/sxwucxgele6z.jpg');
+  background-size: cover;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+  -webkit-filter: blur(5px);
+  -o-filter: blur(5px);
+  filter: blur(5px);
+  transform: scale(1.03);
+}
+.content{
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+.upload-btn {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+}

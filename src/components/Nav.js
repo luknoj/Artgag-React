@@ -24,31 +24,31 @@ const Nav = (props) => {
     )
 }
 return (
-	<div className="content">
+	<div className="">
 		
 		{!props.data.posts.length ?
 			<h1>Is loading...</h1>
 			:
-			<div>	
-				<nav className="grid-x navigation">
+			<div className="container-fluid">	
+				<nav className="row navigation">
 				{/* <div className=""> */}
-					<div className="medium-5 nav-logo">
+					<div className="col-5 nav-logo">
 						<span className="nav-logo-art">ART.</span>
 						<span className="nav-logo-gag">gag</span>
 					</div>
 			{props.data.token ?
 			
-				<ul className="medium-7 nav-bar menu align-right">		
-					<li><Link to="/">Hot</Link></li>
-					<li><Link to="/upload">Upload post</Link></li>
-					<li onClick={props.logoutHandle}><Link to="/">Logout</Link></li> 	
+				<ul className="col-7 nav justify-content-end">		
+					<li className="nav-item"><Link className="nav-link" to="/">Hot</Link></li>
+					<li className="nav-item"><Link className="nav-link" to="/upload">Upload post</Link></li>
+					<li className="nav-item" onClick={props.logoutHandle}><Link className="nav-link" to="/">Logout</Link></li> 	
 				</ul>
 					:
-					<ul className="medium-7 nav-bar menu align-right">
-						<li><Link to="/">Hot</Link></li>
-						<li><Link to="/upload">Upload post</Link></li>
-						<li><Link to="/login">Login</Link></li>
-						<li><Link to="/signup">Signup</Link></li>   
+					<ul className="col-7 nav justify-content-end">
+						<li className="nav-item"><Link className="nav-link" to="/">Hot</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/upload">Upload post</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/signup">Signup</Link></li>   
 					</ul>
 				
 			}

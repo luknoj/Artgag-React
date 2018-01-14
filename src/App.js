@@ -64,8 +64,8 @@ onLogin = (e) => {
 }
   render() {
     return (
-      <div>
-        <div className="background"></div>
+      <div className="">
+        {/* <div className="background"></div> */}
           <Nav
             data={this.state}
             fetchPosts={this.getPosts}
