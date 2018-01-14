@@ -18,10 +18,12 @@ app.post('/api/user/register', registerController.register);
 app.post('/api/user/login', loginController.login);
 app.post('/api/post/upload', authController.auth, postsController.uploadPost);
 app.post('/api/post/:postId',authController.auth, postsController.sendPostComment);
+app.post('/api/post/:postId/rate', authController.auth, postsController.ratePost);
 app.post('/api/post/:postId/:commentId', authController.auth, postsController.deleteComment);
 
 app.get('/api/posts', postsController.getPosts);
 app.get('/api/post/:postId', postsController.getPostComment);
+app.get('/api/post/:postId/rating', postsController.getPostRating);
 
 app.use(express.static('../src/'));
 app.listen(8000, function (err) {

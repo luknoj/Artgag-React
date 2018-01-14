@@ -33,19 +33,19 @@ render(){
       <h1 className="gap-bottom-md">Register form</h1>
       <form onSubmit={this.onRegister}>
         <div className="form-group row justify-content-center">
-          <label className="text-left form-label-md col-1">Email</label>
+          <label className="text-left col-form-label  form-label-md col-1">Email</label>
           <div className="col-3">
             <input className="form-control" type="email" placeholder="Email" onChange={e => this.setState({ email: e.target.value})}/>
           </div>
         </div>
         <div className="form-group row justify-content-center">
-          <label className="text-left form-label-md col-1">Login</label>
+          <label className="text-left col-form-label  form-label-md col-1">Login</label>
           <div className="col-3">
             <input className="form-control" type="text" placeholder="Login" onChange={e => this.setState({ login: e.target.value})}/>
           </div>
         </div>
         <div className="form-group row justify-content-center">
-          <label className="text-left form-label-md col-1">Password</label>
+          <label className="text-left col-form-label form-label-md col-1">Password</label>
           <div className="col-3">
             <input className="form-control" type="password" placeholder="Password" onChange={this.encryptPassword}/>
           </div>

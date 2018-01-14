@@ -110,7 +110,7 @@ class SinglePost extends Component {
                              {this.props.data.token ?
                 <div className="" >
                   <form className="form-inline" onSubmit={this.postComment}>
-                    <div className="form-group col-8">
+                    <div className="input-group">
                       <input className="form-control" type="text" onChange={(e) => { this.setState({ content: e.target.value })}} required/>
                     </div>
                     <button className="btn btn-primary" type="submit">Add comment</button>

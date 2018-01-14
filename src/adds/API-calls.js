@@ -20,6 +20,13 @@ export default class API {
         return response.data.comments;
     })
   };
+  
+  static async getPostRating(postId){
+    return axios.get(`${URL}/api/post/${postId}/rating`)
+    .then((response) => {
+        return response.data.rating;
+    })
+  };
 
   static async loginUser(login, password){
     return axios.post(`${URL}/api/user/login`, { login,password })
@@ -58,6 +65,12 @@ export default class API {
 
   static async authenticate(token){
     return axios.post(`${URL}/api/jwtTest`, token)
+    .then((response) => {
+      return response;
+    })
+  };
+  static async ratePost(token, rate, postId){
+    return axios.post(`${URL}/api/post/${postId}/rate`,{token, rate})
     .then((response) => {
       return response;
     })

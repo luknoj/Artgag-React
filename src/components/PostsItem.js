@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PostsItem = (props) => (   
+const PostsItem = (props) => {
+	return (   
   <div className="col-8 justify-content-center">
 		<div className="card post-item">
 			<Link  to={`/posts/${props.posts.post_id}`}>
@@ -16,13 +17,19 @@ const PostsItem = (props) => (
 			</div>
 			<div className="card-footer" >
 				<div className="row">
+					<div className="col-12">
+						<p className="text-left">Points: {}</p>
+					</div>
+				</div>
+				{/* {console.log(props)} */}
+				<div className="row">
 					<div className="col-2">
-						<button className="icon-padding">
-              <i className="fi-arrow-up"/>
+						<button className="icon-padding" onClick={() => props.sendRate(1, props.posts.post_id)}>
+							<i className="fi-arrow-up"/>
             </button>
 					</div>
 					<div className="col-2">
-						<button className="icon-padding">
+						<button className="icon-padding" onClick={() => props.sendRate(-1, props.posts.post_id)}>
               <i className="fi-arrow-down"/>
             </button>
 					</div>
@@ -33,6 +40,6 @@ const PostsItem = (props) => (
 			</div>
 		</div> 
   </div>
-);
+)};
 
 export default PostsItem;

@@ -130,4 +130,60 @@ module.exports.sendPostComment = function (req, res) {
         })
       }
   });
+};
+module.exports.ratePost = function (req, res, next) {
+  con.query('SELECT * FROM rating WHERE userId = ? AND postId = ?', [req.body.user_id, req.params.postId], function(error, results, fields){
+    if(error){
+      res.status(201);
+      console.log(error);
+    } else {
+      if(results.length > 0){
+        if(results[0].rate == req.body.rate){
+          res.json({
+            message: "You have voted on this post",
+          });
+          res.end();
+        } else {
+          con.query("UPDATE rating SET rate = ? WHERE rateId = ?", [req.body.rate, results[0].rateId], function (error, results, fields) {
+            if(error){
+              console.log(error);
+              res.status(201);
+            } else {
+              res.json({
+                message: "You have changed your vote",
+              })
+            }
+          });
+        }
+    } else {
+      rate = {
+        "postId": req.params.postId,
+        "userId": req.body.user_id,
+        "rate": req.body.rate,
+        "date": new Date(),
+      }
+      con.query("INSERT INTO rating SET ?", rate, function (error, results, fields) {
+        if(error){
+          console.log(error);
+          res.status(201);
+        } else {
+          res.json({
+            message: "You vote has been added",
+          })
+        }
+      });
+    }
+  } 
+  })
+}
+module.exports.getPostRating = function (req, res) {
+  con.query("SELECT SUM(rate) AS finalRating FROM rating WHERE postId = ?", [req.params.postId], function (error, results, fields) {
+    if (error) {
+      res.status(201);    
+    } else {
+      res.json({
+        rating: results[0].finalRating,
+      })
+    }
+  })
 }
