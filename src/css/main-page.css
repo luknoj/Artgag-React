@@ -15,4 +15,10 @@
       padding: 10px 20px; }
     .post-item .card-footer p {
       padding: 10px 0;
-      margin-bottom: 0; }
+      margin-bottom: 0px; }
+  .post-item .card-header p {
+    margin-bottom: 0px; }
+    .post-item .card-header p button {
+      background: none;
+      border: 0px;
+      font-size: 15px; }

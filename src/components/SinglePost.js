@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from '../adds/API-calls';
 import axios from 'axios';
+import CommentList from './CommentList';
 
 class SinglePost extends Component {
   constructor(props){
@@ -11,8 +12,12 @@ class SinglePost extends Component {
       comments: [],
       content: '',
       token: props.data.token,
-      message: null
+      message: null,
+      isHidden: true
     }
+  }
+  editPost = () => {
+    this.setState({ isHidden: !this.state.isHidden });
   }
   componentDidMount(){
     API.getComments(this.props.routeProps.match.params.id)
@@ -52,42 +57,6 @@ class SinglePost extends Component {
       console.log(error);
     })
   }
-  renderComments = () => {
-    var comments = this.state.comments.map( (comment) => {
-      var transformedDate = (new Date(comment.date)).toLocaleDateString();
-      
-      return (
-        <div key={comment.comment_id} className="card post-item" >
-            { this.props.data.userId == comment.user_id ?
-            <div className="card-header">
-              <div className="row">
-                <p className="text-left col-5" >{comment.user_name} ID: {comment.comment_id}</p>
-                <p className="text-right col-5" >{transformedDate}</p>
-                <p className="text-right col-2" >
-                  <button className="icon-padding" onClick={() => this.deleteComment(comment.comment_id) }>
-                    <i className="fi-trash"/>
-                  </button>
-                </p>
-              </div>
-            </div>
-            :
-            <div className="card-header">
-              <div className="row">
-                <p className="text-left col-6" >{comment.user_name} ID: {comment.comment_id}</p>
-                <p className="text-right col-6" >{transformedDate}</p>
-              </div>
-            </div>
-          }
-            
-          <div className="card-block">
-            <p>{comment.content}</p>
-          </div>
-         </div>  
-        )
-      })
-    return comments;
-  }
-  
     render(){
       // console.log(this.state.comments);
       // console.log(this.state.post);
@@ -107,32 +76,35 @@ class SinglePost extends Component {
                   <img src={this.state.post.content} alt={this.state.post.title} />
                 </div>
               </div>
-                             {this.props.data.token ?
-                <div className="" >
-                  <form className="form-inline" onSubmit={this.postComment}>
-                    <div className="input-group">
-                      <input className="form-control" type="text" onChange={(e) => { this.setState({ content: e.target.value })}} required/>
+                {
+                  this.props.data.token ?
+                    <div className="" >
+                      <form className="form-inline" onSubmit={this.postComment}>
+                        <div className="input-group col-8 no-padding-l">
+                          <input className="form-control" type="text" onChange={(e) => { this.setState({ content: e.target.value })}} required/>
+                        </div>
+                        <button className="btn btn-primary col-4" type="submit">Add comment</button>
+                      </form>
+                    </div> 
+                    :
+                    <div>
+                      <h3 className="text-center" >Please login if you want to comment!</h3>
                     </div>
-                    <button className="btn btn-primary" type="submit">Add comment</button>
-                  </form>
-                </div> 
-                :
+                }
+                {
+                  this.state.message != null ?
+                    <div>
+                      <p className="text-success"><b>{this.state.message}</b></p>
+                    </div>
+                    :
+                    <div>
+                      <p className="text-alert"><b>{this.state.message}</b></p>
+                    </div>
+                }
                 <div>
-                  <h3 className="text-center" >Please login if you want to comment!</h3>
-                </div>
-              }
-              {
-                this.state.message != null ?
-                  <div>
-                    <p className="text-success"><b>{this.state.message}</b></p>
-                  </div>
-                  :
-                  <div>
-                    <p className="text-alert"><b>{this.state.message}</b></p>
-                  </div>
-              }
-                <div>
-                  {this.renderComments()}
+                  <CommentList 
+                    postId={this.props.routeProps.match.params.id} 
+                  />
                 </div>
             </div>  
             <div className="col-2"></div>

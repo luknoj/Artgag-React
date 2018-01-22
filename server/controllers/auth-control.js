@@ -6,6 +6,7 @@ module.exports.auth = function (req, res, next) {
     if(err){
       res.json({ 
         status: false,
+        message: "You need to login to perform this action",
         error: err 
       })
     }else {

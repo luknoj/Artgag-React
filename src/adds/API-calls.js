@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://46.228.234.6:8000';
+const URL = 'http://localhost:8000';
 
 export default class API {
  
@@ -76,4 +76,10 @@ export default class API {
     })
   };
 
+  static async editPost(token, commentId, newContent){
+    return axios.post(`${URL}/api/comment/${commentId}`, {token, commentId, newContent})
+    .then((response) => {
+      return response;
+    })
+  };
 }

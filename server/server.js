@@ -20,6 +20,7 @@ app.post('/api/post/upload', authController.auth, postsController.uploadPost);
 app.post('/api/post/:postId',authController.auth, postsController.sendPostComment);
 app.post('/api/post/:postId/rate', authController.auth, postsController.ratePost);
 app.post('/api/post/:postId/:commentId', authController.auth, postsController.deleteComment);
+app.post('/api/comment/:commentId', authController.auth, postsController.editComment);
 
 app.get('/api/posts', postsController.getPosts);
 app.get('/api/post/:postId', postsController.getPostComment);

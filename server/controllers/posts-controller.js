@@ -56,7 +56,7 @@ module.exports.uploadPost = function (req, res) {
         }) 
     }
   });
-}
+};
 module.exports.getPosts = function (req,res){
   con.query('SELECT * FROM articles LIMIT 10', function (error,results,fields){
     if(error){
@@ -87,7 +87,7 @@ module.exports.deleteComment = function (req, res) {
       })
     }
   })
-}
+};
 module.exports.getPostComment = function(req, res){
   var postId = req.params.postId;
 
@@ -175,7 +175,7 @@ module.exports.ratePost = function (req, res, next) {
     }
   } 
   })
-}
+};
 module.exports.getPostRating = function (req, res) {
   con.query("SELECT SUM(rate) AS finalRating FROM rating WHERE postId = ?", [req.params.postId], function (error, results, fields) {
     if (error) {
@@ -186,4 +186,15 @@ module.exports.getPostRating = function (req, res) {
       })
     }
   })
-}
+};
+module.exports.editComment = function (req, res) {
+  console.log(req);
+  con.query("UPDATE comments SET content = ? WHERE user_id = ? AND comment_id = ?", [req.body.newContent ,req.body.user_id, req.params.commentId], function (error, results, fields) {
+    if(error){
+      console.log(error);
+      res.status(201);
+    } else {
+      res.json({ message: "Your comment has been updated" });
+    }
+  });
+};
