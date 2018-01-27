@@ -1,3 +1,18 @@
+.icon-post {
+  color: rgba(0, 0, 0, 0.25);
+  padding: 5px 12px; 
+  background: none;
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,.125);
+}
+.icon-comment {
+  color: black;
+  padding: 0; 
+  background: none;
+  font-size: 15px;
+  border: 0;
+}
 .full-width {
   width: 100%;
 }
@@ -25,4 +40,49 @@
 }
 .no-padding-b {
   padding-bottom: 0;
+}
+.sm-padding {
+  padding: 5px;
+}
+.sm-padding-l {
+  padding-left: 5px;
+}
+.sm-padding-r {
+  padding-right: 5px;
+}
+.sm-padding-t {
+  padding-top: 5px;
+}
+.sm-padding-b {
+  padding-bottom: 5px;
+}
+.sm-margin {
+  margin: 5px;
+}
+.sm-margin-l {
+  margin-left: 5px;
+}
+.sm-margin-r {
+  margin-right: 5px;
+}
+.sm-margin-t {
+  margin-top: 5px;
+}
+.sm-margin-b {
+  margin-bottom: 5px;
+}
+.md-margin {
+  margin: 10px;
+}
+.md-margin-l {
+  margin-left: 10px;
+}
+.md-margin-r {
+  margin-right: 10px;
+}
+.md-margin-t {
+  margin-top: 10px;
+}
+.md-margin-b {
+  margin-bottom: 10px;
 }

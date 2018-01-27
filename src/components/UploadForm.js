@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 import API from '../adds/API-calls';
 
 class UploadForm extends Component {
@@ -42,7 +41,7 @@ class UploadForm extends Component {
       API.uploadPost(data)
       .then((result) => {
         console.log(result);
-        this.setState({ result });
+        this.setState({ response: result });
       })
     };
   }
@@ -50,20 +49,19 @@ class UploadForm extends Component {
     this.setState({ file: e.target.files[0] });
   }
   render(){
-   console.log(this.props.token);
     return (
-      <div className=" grid-x grid-padding-x align-center-middle text-center">
-        <div className="cell medium-6">
-          <h3>Upload your image</h3>
+      <div className="container text-center">
+        <div className="row justify-content-center">
+          <p className="col-12 h3" >Upload your image</p>
           <form onSubmit={this.uploadFile} >
-            <label >
-              <input type="text" placeholder="Title" onChange={(e) => this.setState({ title: e.target.value })} required/>
+            <label className="col-12 no-padding" >
+              <input className="input-upload-title" type="text" placeholder="Title" onChange={(e) => this.setState({ title: e.target.value })} required/>
             </label>
-            <label >
+            <label className="uploadContainer col-12">
               Choose a file to Upload
               <input type="file" onChange={this.getFile} name="image" id=""/>
             </label>
-            <button type="submit" className="upload-btn" >Upload</button>
+            <button type="submit" className="btn btn-upload col-4" >Upload</button>
           </form>
         </div>
       </div>

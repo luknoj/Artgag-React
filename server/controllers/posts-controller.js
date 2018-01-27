@@ -2,63 +2,54 @@ var con = require('../db_connect');
 var atob = require('atob');
 var blobUtil = require('blob-util');
 var AWS = require('aws-sdk');
-
+var axios = require('axios');
+var FormData = require('form-data');
 var AWS_ACCESS_ID_KEY = "";
 var AWS_SECRET_ACCESS_KEY = "";
 
 module.exports.uploadPost = function (req, res) {
   var file = req.body.content;
-  var buffer = new Buffer(file.base64.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-  var bucketName = ''; // project-tas
-  AWS.config.update({
-    region: 'us-east-2',
-    credentials: new AWS.CognitoIdentityCredentials({
-      IdentityPoolId: ''
-    })
-  });
-  var params = { 
-    Bucket: bucketName,
-    // 
-    // Body: buffer,
-  };
+  var base64result = file.base64.split(',')[1];
   var data = {
-    Key: file.name,
-    Body: buffer,
-    ContentEncoding: 'base64',
-    ContentType: file.type
+    image: base64result,
+    title: req.body.title,
   }
-  var s3 = new AWS.S3({params});
-  s3.putObject(data, function (err, data) {
+  const options = {
+    "baseURL": 'https://api.imgur.com',
+    "headers": {
+      "Authorization": "Bearer "
+    }
+  }
+  axios.post('/3/image', data, options)
+  .then(function (response) {
     var post = {
-      "content": 'https://s3.us-east-2.amazonaws.com/' + bucketName +  "/" + file.name,
+      "content": response.data.data.link,
       "user_id": req.body.user_id,
       "title": req.body.title,
       "post_date": new Date()
     };
-    if(err){
-      console.log(err);
-      res.json({ error: err})
-    } else {
-      con.query('INSERT INTO articles SET ?', post, function(error, results, fields){
-        if (error){
-            res.json({
-              status: false,
-              message: 'There are some errors with query',
-              error: error,
-            })
-          } else {
-            res.json({
-              status: true,
-              data: results,
-              message: 'Post added succesfully'
-            })
-          }
-        }) 
-    }
+    con.query('INSERT INTO articles SET ?', post, function(error, results, fields){
+      if (error){
+          res.json({
+            status: false,
+            message: 'There are some errors with query',
+            error: error,
+          })
+        } else {
+          res.json({
+            status: true,
+            data: results,
+            message: 'Post added succesfully'
+          })
+        }
+      }) 
+  })
+  .catch(function (error) {
+    console.log(error.response);
   });
 };
 module.exports.getPosts = function (req,res){
-  con.query('SELECT * FROM articles LIMIT 10', function (error,results,fields){
+  con.query('SELECT * FROM articles ORDER BY post_date DESC LIMIT 10', function (error,results,fields){
     if(error){
       res.json({
         status: false,
@@ -70,6 +61,20 @@ module.exports.getPosts = function (req,res){
         })
       } 
  });
+};
+module.exports.getRanking = function (req, res) {
+  con.query("SELECT articles.*, SUM(rating.rate) AS rating FROM articles LEFT JOIN rating ON rating.postId = articles.post_id GROUP BY rating.postId LIMIT 10", function (error, results, fields) {
+    if(error) {
+      res.json({
+        error
+      })
+    } else {
+      console.log(results);
+      res.json({
+        rating: results
+      })
+    }
+  });
 };
 module.exports.deleteComment = function (req, res) {
   console.log(req.body);
@@ -91,7 +96,7 @@ module.exports.deleteComment = function (req, res) {
 module.exports.getPostComment = function(req, res){
   var postId = req.params.postId;
 
-  con.query('SELECT * FROM comments WHERE post_id =?', [postId],function (error, results, fields){
+  con.query('SELECT * FROM comments WHERE post_id =? ORDER BY date DESC', [postId],function (error, results, fields){
     if(error){
       res.json({
         status: 201,

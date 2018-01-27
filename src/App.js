@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import Nav from './components/Nav';
-import axios from 'axios';
 import './App.css';
 import './adds/foundation-icons.css';
 import { Redirect } from 'react-router-dom';
 import API from './adds/API-calls';
 
-const URL = "http://46.228.234.6:8000";
 class App extends Component {
 constructor(props){
     super(props);
@@ -48,7 +46,6 @@ onLogin = (e) => {
   e.preventDefault();
   API.loginUser(this.state.login, this.state.password)
       .then((response) => {
-        console.log(response);
         if(response.data.status){
           this.setState({ 
             userId: response.data.userId,
@@ -57,7 +54,7 @@ onLogin = (e) => {
           localStorage.setItem("login", this.state.login);
           localStorage.setItem("userId", this.state.userId);
           localStorage.setItem("token", this.state.token);
-          <Redirect to="/" />
+          <Redirect to="/"/>
         }
          this.setState({ message: response.data.message });
       })

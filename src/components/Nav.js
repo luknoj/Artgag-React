@@ -10,6 +10,7 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import SinglePost from './SinglePost';
 import UploadForm from './UploadForm';
+import RatingList from './RatingList';
 
 const Nav = (props) => {
   const PrivateRoute = ({ component: Component, authed, fetchPosts, ...rest}) => {
@@ -40,12 +41,14 @@ return (
 			
 				<ul className="col-7 nav justify-content-end">		
 					<li className="nav-item"><Link className="nav-link" to="/">Hot</Link></li>
+					<li className="nav-item"><Link className="nav-link" to="/rating">Rating</Link></li>
 					<li className="nav-item"><Link className="nav-link" to="/upload">Upload post</Link></li>
 					<li className="nav-item" onClick={props.logoutHandle}><Link className="nav-link" to="/">Logout</Link></li> 	
 				</ul>
 					:
 					<ul className="col-7 nav justify-content-end">
 						<li className="nav-item"><Link className="nav-link" to="/">Hot</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/rating">Rating</Link></li>
 						<li className="nav-item"><Link className="nav-link" to="/upload">Upload post</Link></li>
 						<li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li>
 						<li className="nav-item"><Link className="nav-link" to="/signup">Signup</Link></li>   
@@ -58,6 +61,7 @@ return (
 				<Route exact path="/" render={ (routeProps) => <PostsList routeProps={routeProps} {...props}/>} />
 				<Route path="/login" render={ (routeProps) => <LoginForm {...routeProps} {...props} />}/>
 				<Route path="/signup" component={SignupForm} />
+				<Route path="/rating" render={(routeProps) => <RatingList {...routeProps} {...props} />}/>
 				<Route path="/posts/:id" render={(routeProps) => <SinglePost routeProps={routeProps} {...props} />}/>
 				<PrivateRoute path="/upload" authed={props.data.token} fetchPosts={props.fetchPosts} component={UploadForm} />
 			</Switch>		

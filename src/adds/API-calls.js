@@ -82,4 +82,11 @@ export default class API {
       return response;
     })
   };
+
+  static async getRanking(type){
+    return axios.get(`${URL}/api/posts/ranking`, type)
+    .then((response) => {
+      return response.data.rating;
+    })
+  }
 }

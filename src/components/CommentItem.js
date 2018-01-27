@@ -22,9 +22,16 @@ class CommentItem extends Component {
     });
     this.props.getComments(this.props.comment.post_id);
   };
-
   setVisibility = () => {
     this.setState({ isHidden: !this.state.isHidden });
+  };
+  deleteComment = (comment_id) => {
+    API.deleteComment(localStorage.getItem("token"), comment_id, this.props.comment.post_id)
+    .then((response) => {
+      console.log(response);
+      this.setState({ message: response.data.message });
+      this.props.getComments(this.props.comment.post_id);
+    })
   };
   render(){
     return(
@@ -34,12 +41,12 @@ class CommentItem extends Component {
             <div className="row align-items-center">
               <p className="text-left col-8" >{this.props.comment.user_name} ID: {this.props.comment.comment_id}</p>
               <p className="text-right col-1" >
-                <button className="icon-padding" onClick={() => this.setVisibility() }>
+                <button className="icon-comment" onClick={() => this.setVisibility() }>
                   <i className="fi-pencil"/>
                 </button>
               </p>
               <p className="text-left col-1" >
-                <button className="icon-padding" onClick={() => this.deleteComment(this.props.comment.comment_id) }>
+                <button className="icon-comment" onClick={() => this.deleteComment(this.props.comment.comment_id) }>
                   <i className="fi-trash"/>
                 </button>
               </p>

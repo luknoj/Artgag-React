@@ -12,10 +12,6 @@
       border: 1px solid rgba(0,0,0,.125);
       background: none;
     }
-    .icon-padding{
-      color: rgba(0,0,0,.25);
-      padding: 10px 20px;
-    }
     p {
       padding: 10px 0;
       margin-bottom: 0px;
@@ -24,11 +20,10 @@
   .card-header {
     p {
       margin-bottom: 0px;
-      button {
-        background: none;
-        border: 0px;
-        font-size: 15px;
-      }
     }
+  }
+  .card-block {
+    padding: 10px 15px;
+    font-size: 12px;
   }
 }

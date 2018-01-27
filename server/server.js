@@ -23,6 +23,7 @@ app.post('/api/post/:postId/:commentId', authController.auth, postsController.de
 app.post('/api/comment/:commentId', authController.auth, postsController.editComment);
 
 app.get('/api/posts', postsController.getPosts);
+app.get('/api/posts/ranking', postsController.getRanking);
 app.get('/api/post/:postId', postsController.getPostComment);
 app.get('/api/post/:postId/rating', postsController.getPostRating);
 

@@ -7,7 +7,7 @@ class PostsItem extends Component {
     super(props);
 
     this.state = {
-      rating: 0
+      rating: "",
     }
   }
   componentDidMount(){
@@ -32,7 +32,7 @@ class PostsItem extends Component {
 				<div className="card post-item">
 					<Link  to={`/posts/${this.props.posts.post_id}`}>
 						<div className="card-header">
-							<h3>{this.props.posts.title}</h3>
+							<p className="h3">{this.props.posts.title}</p>
 						</div>
 					</Link>
 					<div className="card-block">
@@ -47,17 +47,15 @@ class PostsItem extends Component {
 							</div>
 						</div>
 						<div className="row">
-							<div className="col-2">
-								<button className="icon-padding" onClick={() => this.sendRate(1, this.props.posts.post_id) }>
+							<div className="col-6">
+								<button className="icon-post sm-margin-r" onClick={() => this.sendRate(1, this.props.posts.post_id) }>
 									<i className="fi-arrow-up"/>
 								</button>
-							</div>
-							<div className="col-2">
-								<button className="icon-padding" onClick={() => this.sendRate(-1, this.props.posts.post_id) }>
+								<button className="icon-post sm-margin-r" onClick={() => this.sendRate(-1, this.props.posts.post_id) }>
 									<i className="fi-arrow-down"/>
 								</button>
 							</div>
-							<div className="col-8 text-right">
+							<div className="col-6 text-right">
 								<p>{(new Date(this.props.posts.post_date)).toLocaleDateString()}</p>
 							</div>
 						</div>

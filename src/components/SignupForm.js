@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import CryptoJS from 'crypto-js';
 import API from '../adds/API-calls';
 
@@ -11,16 +10,17 @@ constructor(props){
     login: 'Login',
     password: 'Password',
     email: 'Email',
+    message: "",
     };
   }
 onRegister = (e) => {
   e.preventDefault();
   API.registerUser(this.state.login, this.state.email, this.state.password)   
-  .then(function (response) {
-    console.log(response.data);
+  .then((response) => {
+    this.setState({ message: response.data.message });
   })
-  .catch(function (error) {
-    console.log(error.data);
+  .catch((error) => {
+    console.log(error);
   });
 }
 encryptPassword = (e) => {
@@ -50,6 +50,11 @@ render(){
             <input className="form-control" type="password" placeholder="Password" onChange={this.encryptPassword}/>
           </div>
         </div>
+        {this.state.message.length > 0 ?
+          <p className="text-alert h6" >{this.state.message}</p>
+          :
+          <p></p>
+          }
         <button className="btn btn-primary" type="submit">Submit</button>
       </form>
     </div>            

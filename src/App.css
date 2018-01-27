@@ -53,18 +53,29 @@
       border-radius: 5px;
       border: 1px solid rgba(0, 0, 0, 0.125);
       background: none; }
-    .post-item .card-footer .icon-padding {
-      color: rgba(0, 0, 0, 0.25);
-      padding: 10px 20px; }
     .post-item .card-footer p {
       padding: 10px 0;
       margin-bottom: 0px; }
   .post-item .card-header p {
     margin-bottom: 0px; }
-    .post-item .card-header p button {
-      background: none;
-      border: 0px;
-      font-size: 15px; }
+  .post-item .card-block {
+    padding: 10px 15px;
+    font-size: 12px; }
+
+.icon-post {
+  color: rgba(0, 0, 0, 0.25);
+  padding: 5px 12px;
+  background: none;
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.125); }
+
+.icon-comment {
+  color: black;
+  padding: 0;
+  background: none;
+  font-size: 15px;
+  border: 0; }
 
 .full-width {
   width: 100%; }
@@ -93,6 +104,93 @@
 
 .no-padding-b {
   padding-bottom: 0; }
+
+.sm-padding {
+  padding: 5px; }
+
+.sm-padding-l {
+  padding-left: 5px; }
+
+.sm-padding-r {
+  padding-right: 5px; }
+
+.sm-padding-t {
+  padding-top: 5px; }
+
+.sm-padding-b {
+  padding-bottom: 5px; }
+
+.sm-margin {
+  margin: 5px; }
+
+.sm-margin-l {
+  margin-left: 5px; }
+
+.sm-margin-r {
+  margin-right: 5px; }
+
+.sm-margin-t {
+  margin-top: 5px; }
+
+.sm-margin-b {
+  margin-bottom: 5px; }
+
+.md-margin {
+  margin: 10px; }
+
+.md-margin-l {
+  margin-left: 10px; }
+
+.md-margin-r {
+  margin-right: 10px; }
+
+.md-margin-t {
+  margin-top: 10px; }
+
+.md-margin-b {
+  margin-bottom: 10px; }
+
+.uploadContainer {
+  background: none;
+  border-radius: 5px;
+  float: left;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 1px dotted black; }
+
+.uploadContainer [type=file] {
+  cursor: inherit;
+  display: block;
+  font-size: 999px;
+  filter: alpha(opacity=0);
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0; }
+
+.btn-upload {
+  font-weight: bold;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 1px rgba(0, 0, 0, 0.1), inset 0 -10px 20px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  background-color: #59d; }
+
+.btn-upload:hover {
+  background: #48c; }
+
+.input-upload-title {
+  width: 100%;
+  font-size: 1rem;
+  padding: 5px;
+  border-top: 0px;
+  border-bottom: 0px solid black;
+  border-left: 0px;
+  border-right: 0px; }
 
 * {
   margin: 0;
