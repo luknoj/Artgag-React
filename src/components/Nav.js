@@ -71,19 +71,3 @@ return (
 }
 
 export default Nav;
-
-
-// const authorizate = (token) => {
-// 	return axios.post('http://localhost:8000/api/jwtTest', { token })
-// 	.then((response) => {
-// 		if(response.data.status){
-// 			return response.data.status
-// 		} else {
-// 			return response.data.status
-// 		}
-// 	})
-// .catch( (error) => {
-// 	console.log(error)
-// })
-
-// }
