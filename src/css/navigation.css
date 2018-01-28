@@ -7,12 +7,12 @@
   border-bottom: 3px solid #dfc7c7; }
   .navigation .hamburger {
     margin-left: auto;
-    margin-bottom: 36px;
-    margin-top: 35px;
+    margin-bottom: 26px;
+    margin-top: 25px;
     margin-right: 34px;
     display: block;
     height: 20px;
-    width: 20px;
+    width: 30px;
     float: right;
     cursor: pointer; }
   .navigation .hamburger:before {
@@ -35,7 +35,7 @@
     max-height: 500px; }
   .navigation .nav-logo {
     z-index: 2;
-    top: 9px;
+    top: 0px;
     padding-left: 15px;
     position: absolute; }
     .navigation .nav-logo a {
@@ -88,7 +88,7 @@
   .navigation .nav-item {
     margin: 0;
     display: block;
-    padding: 25px;
+    padding: 15px;
     font-size: 1rem;
     font-weight: bold; }
 
