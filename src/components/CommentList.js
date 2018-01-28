@@ -67,8 +67,8 @@ class CommentList extends Component {
               </form>
             </div> 
             :
-            <div>
-              <h3 className="text-center gap-bottom-md">Please login if you want to comment!</h3>
+            <div className="alert alert-info h6" role="alert">
+               Please <a href="/login" class="alert-link">login</a> if you want to comment!
             </div>
         }
         {
