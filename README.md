@@ -18,7 +18,7 @@ Things to do:
 
 ## Getting started
 
-Before installing any modules first you need to generate your auth key for [imgur account](https://apidocs.imgur.com/#a062733d-ef42-3741-8521-b06e9b3310d2) and set the address to your server.
+Before installing any modules first you need to generate your auth key for [imgur account](https://apidocs.imgur.com/#a062733d-ef42-3741-8521-b06e9b3310d2) and set the address to your server. Site requires a database, a sample will be added at 
 
 #### src/adds/API-calls.js
 
@@ -35,6 +35,14 @@ const URL = 'server url';
       "Authorization": "Bearer {{auth key}}"
     }
   }
+```
+Sample database and data can be seen at DATABASE.md
+#### Installing dependencies and launching the app
+
+```
+npm install
+nodemon server/server.js
+npm start
 ```
 
 ## Author
