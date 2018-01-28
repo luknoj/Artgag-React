@@ -1,4 +1,4 @@
-#Sample database with some data
+# Sample database with some data
 
 You can copy and paste all of this commands into your MySQL database and the connect it with the server. I recommend XAMPP for that purpose.
 
