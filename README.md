@@ -36,7 +36,7 @@ const URL = 'server url';
     }
   }
 ```
-Sample database and data can be seen at DATABASE.md
+Sample database and data can be seen at [DATABASE.md](https://github.com/mighty-titan/Artgag-React/blob/master/server/DATABASE.md)
 #### Installing dependencies and launching the app
 
 ```

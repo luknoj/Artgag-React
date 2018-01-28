@@ -58,7 +58,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 Passwords are hashed and stored as hash in the database.
-Sample account is "root" with password "admin".
+Sample account is *"root"* with password *"admin"*.
 
 ```
 INSERT INTO `users` (`userId`, `userName`, `userEmail`, `userPass`, `creationDate`, `is_admin`) VALUES
