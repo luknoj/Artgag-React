@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://46.228.234.6:8000';
+const URL = '';
 
 export default class API {
  

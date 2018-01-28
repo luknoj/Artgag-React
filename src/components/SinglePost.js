@@ -21,23 +21,23 @@ class SinglePost extends Component {
   render(){
   if(this.state.post){
     return(
-        <div className="" >
-          <div className="row justify-content-center">
-            <div className="col-lg-6 col-md-10 col-sm-12">
-              <div className="card post-item">
-                <div className="card-header">
-                  <p className="h3">{this.state.post.title}</p>
-                </div>
-                <div className="card-block">
-                  <img src={this.state.post.content} alt={this.state.post.title} />
-                </div>
+      <div className="" >
+        <div className="row justify-content-center">
+          <div className="col-lg-6 col-md-10 col-sm-12">
+            <div className="card post-item">
+              <div className="card-header">
+                <p className="h3">{this.state.post.title}</p>
               </div>
-                <CommentList postId={this.props.routeProps.match.params.id}/>
-            </div>  
-          </div>
+              <div className="card-block">
+                <img src={this.state.post.content} alt={this.state.post.title} />
+              </div>
+            </div>
+              <CommentList postId={this.props.routeProps.match.params.id}/>
+          </div>  
         </div>
+      </div>
     )}
-else {
+  else {
         return (
           <h1>This post dosent exist!</h1>
         );

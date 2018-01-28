@@ -1,11 +1,6 @@
 var con = require('../db_connect');
-var atob = require('atob');
-var blobUtil = require('blob-util');
-var AWS = require('aws-sdk');
 var axios = require('axios');
-var FormData = require('form-data');
-var AWS_ACCESS_ID_KEY = "";
-var AWS_SECRET_ACCESS_KEY = "";
+
 
 module.exports.uploadPost = function (req, res) {
   var file = req.body.content;

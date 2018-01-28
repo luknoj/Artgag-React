@@ -34,7 +34,6 @@ class CommentItem extends Component {
     })
   };
   render(){
-    // console.log(typeof(localStorage.getItem("userId")) + typeof(this.props.comment.user_id))
     return(
       <div>
         { Number(localStorage.getItem("userId")) === Number(this.props.comment.user_id) ?
