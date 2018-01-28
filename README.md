@@ -13,7 +13,7 @@ Things done:
 Things to do:
 
 - Improve ranking
-- User site
+- User profiles site
 - Admin site
 
 ## Getting started
