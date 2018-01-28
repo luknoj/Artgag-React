@@ -31,7 +31,7 @@ class PostsItem extends Component {
 			<div className="col-xl-6 col-lg-8 col-md-10 col-sm-12 justify-content-center">
 				<div className="card post-item">					
 						<div className="card-header">
-							<p className="h3">
+							<p className="header h3">
 								<Link  to={`/posts/${this.props.posts.post_id}`}>
 									{this.props.posts.title}
 								</Link>
