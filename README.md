@@ -34,8 +34,22 @@ const URL = 'server url';
     "headers": {
       "Authorization": "Bearer {{auth key}}"
     }
-  }
+  }  
 ```
+
+#### server/db_connent 
+
+If you are going to host it localy you can copy and paste this:
+
+```
+var con = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: '{{database_name}}'
+});
+```
+
 Sample database and data can be seen at [DATABASE.md](https://github.com/mighty-titan/Artgag-React/blob/master/server/DATABASE.md)
 #### Installing dependencies and launching the app
 
