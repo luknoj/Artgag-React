@@ -31,29 +31,30 @@ return (
 			<h1>Is loading...</h1>
 			:
 			<div className="container-fluid">	
-				<nav className="row navigation">
-				{/* <div className=""> */}
-					<div className="col-5 nav-logo">
-						<span className="nav-logo-art">ART.</span>
-						<span className="nav-logo-gag">gag</span>
-					</div>
+				<nav className="row navigation align-items-center">
+						<div className="nav-logo">
+							<Link to="/">
+								<span className="nav-logo-art">ART.</span>
+								<span className="nav-logo-gag">gag</span>
+							</Link>
+						</div>
+					<label className="hamburger" htmlFor="nav-toggle"></label>
+					<input id="nav-toggle" type="checkbox" className="hidden" />	
 			{props.data.token ?
-			
-				<ul className="col-7 nav justify-content-end">		
-					<li className="nav-item"><Link className="nav-link" to="/">Hot</Link></li>
-					<li className="nav-item"><Link className="nav-link" to="/rating">Rating</Link></li>
-					<li className="nav-item"><Link className="nav-link" to="/upload">Upload post</Link></li>
-					<li className="nav-item" onClick={props.logoutHandle}><Link className="nav-link" to="/">Logout</Link></li> 	
-				</ul>
-					:
-					<ul className="col-7 nav justify-content-end">
+					<ul className="col-12 nav justify-content-end">	
 						<li className="nav-item"><Link className="nav-link" to="/">Hot</Link></li>
 						<li className="nav-item"><Link className="nav-link" to="/rating">Rating</Link></li>
-						<li className="nav-item"><Link className="nav-link" to="/upload">Upload post</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/upload">Upload</Link></li>
+						<li className="nav-item" onClick={props.logoutHandle}><Link className="nav-link" to="/">Logout</Link></li> 	
+					</ul>
+					:
+					<ul className="col-12 nav justify-content-end">
+						<li className="nav-item"><Link className="nav-link" to="/">Hot</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/rating">Rating</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/upload">Upload</Link></li>
 						<li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li>
 						<li className="nav-item"><Link className="nav-link" to="/signup">Signup</Link></li>   
 					</ul>
-				
 			}
 				{/* </div> */}
 			</nav>		

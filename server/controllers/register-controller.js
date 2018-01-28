@@ -12,10 +12,12 @@ module.exports.register = function (req,res) {
         if(error) {
             res.json({
                 error: error,
-                message: 'There are some errors with query',
+                status: false,
+                message: 'User or email exists',
             })
         } else {
             res.json({
+                status: true,
                 message: 'User registered sucessfully'
             })
         }

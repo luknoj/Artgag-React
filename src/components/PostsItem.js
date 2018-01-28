@@ -28,13 +28,15 @@ class PostsItem extends Component {
   } 
 	render(){
 		return (   
-			<div className="col-8 justify-content-center">
-				<div className="card post-item">
-					<Link  to={`/posts/${this.props.posts.post_id}`}>
+			<div className="col-xl-6 col-lg-8 col-md-10 col-sm-12 justify-content-center">
+				<div className="card post-item">					
 						<div className="card-header">
-							<p className="h3">{this.props.posts.title}</p>
+							<p className="h3">
+								<Link  to={`/posts/${this.props.posts.post_id}`}>
+									{this.props.posts.title}
+								</Link>
+							</p>
 						</div>
-					</Link>
 					<div className="card-block">
 						<Link  to={`/posts/${this.props.posts.post_id}`}>
 							<img src={this.props.posts.content} alt=""/>	
@@ -43,10 +45,10 @@ class PostsItem extends Component {
 					<div className="card-footer" >
 						<div className="row">
 							<div className="col-12">
-								<p className="text-left">Points: { this.state.rating < 0 ? 0 : this.state.rating }</p>
+								<p className="text-left">Points: { this.state.rating < 0 || this.state.rating == null ? 0 : this.state.rating }</p>
 							</div>
 						</div>
-						<div className="row">
+						<div className="row align-items-center">
 							<div className="col-6">
 								<button className="icon-post sm-margin-r" onClick={() => this.sendRate(1, this.props.posts.post_id) }>
 									<i className="fi-arrow-up"/>

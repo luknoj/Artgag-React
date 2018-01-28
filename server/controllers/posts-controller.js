@@ -69,7 +69,6 @@ module.exports.getRanking = function (req, res) {
         error
       })
     } else {
-      console.log(results);
       res.json({
         rating: results
       })
@@ -144,10 +143,17 @@ module.exports.ratePost = function (req, res, next) {
     } else {
       if(results.length > 0){
         if(results[0].rate == req.body.rate){
-          res.json({
-            message: "You have voted on this post",
+          con.query("UPDATE rating SET rate = ? WHERE rateId = ?", [0, results[0].rateId], function (error, results, fields) {
+            if(error){
+              console.log(error);
+              res.status(201);
+            } else {
+              res.json({
+                message: "Your vote has been canceld",
+              })
+            }
           });
-          res.end();
+          // res.end();
         } else {
           con.query("UPDATE rating SET rate = ? WHERE rateId = ?", [req.body.rate, results[0].rateId], function (error, results, fields) {
             if(error){

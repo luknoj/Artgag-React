@@ -34,9 +34,10 @@ class CommentItem extends Component {
     })
   };
   render(){
+    // console.log(typeof(localStorage.getItem("userId")) + typeof(this.props.comment.user_id))
     return(
       <div>
-        { localStorage.getItem("userId") == this.props.comment.user_id ?
+        { Number(localStorage.getItem("userId")) === Number(this.props.comment.user_id) ?
           <div className="card-header">
             <div className="row align-items-center">
               <p className="text-left col-8" >{this.props.comment.user_name} ID: {this.props.comment.comment_id}</p>

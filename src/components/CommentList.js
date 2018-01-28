@@ -68,7 +68,7 @@ class CommentList extends Component {
             </div> 
             :
             <div>
-              <h3 className="text-center">Please login if you want to comment!</h3>
+              <h3 className="text-center gap-bottom-md">Please login if you want to comment!</h3>
             </div>
         }
         {

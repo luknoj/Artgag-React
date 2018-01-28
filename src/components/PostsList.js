@@ -18,7 +18,7 @@ class PostsList extends Component {
 
   render(){
     return(
-      <div className="container">
+      <div className="">
         {this.renderPostsList()}
       </div>
     )

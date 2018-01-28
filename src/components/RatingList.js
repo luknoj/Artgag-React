@@ -57,7 +57,7 @@ class RatingList extends Component {
   }
   render(){
     return(
-      <div className="container">
+      <div className="">
         <div className="row justify-content-center">
           <div className="col-3 text-center gap-bottom-md">
             <button className="icon-post sm-margin-r" onClick={() => this.sortByCriteria("rate asc") }>

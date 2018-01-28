@@ -5,8 +5,45 @@
   margin-bottom: 20px;
   background: black;
   border-bottom: 3px solid #dfc7c7; }
+  .navigation .hamburger {
+    margin-left: auto;
+    margin-bottom: 36px;
+    margin-top: 35px;
+    margin-right: 34px;
+    display: block;
+    height: 20px;
+    width: 20px;
+    float: right;
+    cursor: pointer; }
+  .navigation .hamburger:before {
+    content: "";
+    display: block;
+    background-color: #f3f3f3;
+    width: 100%;
+    height: 4px; }
+  .navigation .hamburger:after {
+    content: "";
+    display: block;
+    background-color: #f3f3f3;
+    width: 100%;
+    height: 4px;
+    margin-top: 4px;
+    box-shadow: 0px 8px 0 #f3f3f3; }
+  .navigation input[type="checkbox"] {
+    display: none; }
+  .navigation input[type="checkbox"]:checked ~ .nav {
+    max-height: 500px; }
   .navigation .nav-logo {
-    padding: 10px; }
+    z-index: 2;
+    top: 9px;
+    padding-left: 15px;
+    position: absolute; }
+    .navigation .nav-logo a {
+      color: white;
+      text-decoration: none; }
+    .navigation .nav-logo a:hover {
+      color: white;
+      text-decoration: none; }
     .navigation .nav-logo .nav-logo-art {
       font-weight: bold;
       font-family: 'Cinzel', serif;
@@ -14,13 +51,22 @@
     .navigation .nav-logo .nav-logo-gag {
       top: 10px;
       font-size: 1rem; }
+  .navigation .nav {
+    display: block;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    clear: both;
+    transition: max-height 0.3s cubic-bezier(0.63, 0, 0.25, 1); }
   .navigation .nav-link {
+    text-align: center;
+    display: block;
     color: white;
     text-decoration: none;
-    padding: 33px;
-    font-size: 1rem;
-    font-weight: bold; }
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s; }
     .navigation .nav-link:hover {
+      border-bottom: 2px solid white;
       color: white;
       background-color: transparent;
       -webkit-box-shadow: none;
@@ -33,10 +79,32 @@
       -moz-box-shadow: none;
       box-shadow: none; }
     .navigation .nav-link:active {
+      border-bottom: 2px solid white;
       color: white;
       background-color: transparent;
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
       box-shadow: none; }
   .navigation .nav-item {
-    color: white; }
+    margin: 0;
+    display: block;
+    padding: 25px;
+    font-size: 1rem;
+    font-weight: bold; }
+
+@media (min-width: 870px) {
+  .navigation .hamburger {
+    display: none; }
+  .navigation .nav {
+    display: inline-block;
+    background: transparent;
+    float: right;
+    border: 0 !important;
+    max-height: none; }
+  .navigation .nav, .navigation .nav-item {
+    text-align: right;
+    display: inline-block; }
+  .navigation .hidden {
+    position: fixed;
+    top: -100%;
+    left: -100%; } }

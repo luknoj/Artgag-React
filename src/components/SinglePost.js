@@ -13,7 +13,7 @@ class SinglePost extends Component {
     }
   }
   componentDidMount(){
-    var post = this.props.data.posts.find( p => p.post_id == this.props.routeProps.match.params.id);
+    var post = this.props.data.posts.find( p => String(p.post_id) === String(this.props.routeProps.match.params.id));
     this.setState({
       post: post,
     });
@@ -21,12 +21,12 @@ class SinglePost extends Component {
   render(){
   if(this.state.post){
     return(
-        <div className="container" >
+        <div className="" >
           <div className="row justify-content-center">
-            <div className="col-8 ">
+            <div className="col-lg-6 col-md-10 col-sm-12">
               <div className="card post-item">
                 <div className="card-header">
-                  <h3>{this.state.post.title}</h3>
+                  <p className="h3">{this.state.post.title}</p>
                 </div>
                 <div className="card-block">
                   <img src={this.state.post.content} alt={this.state.post.title} />
