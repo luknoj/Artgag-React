@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Project for TAS classes",
   "private": true,
+  "homepage": "https://mighty-titan.github.io/Artgag-React/",
   "dependencies": {
     "atob": "^2.0.3",
     "aws-sdk": "^2.177.0",
@@ -12,6 +13,7 @@
     "crypto-js": "^3.1.9-1",
     "express": "^4.16.2",
     "form-data": "^2.3.1",
+    "gh-pages": "^1.1.0",
     "jsonwebtoken": "^8.1.0",
     "mysql": "^2.15.0",
     "node-sass-chokidar": "0.0.3",
@@ -28,7 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "Lukas Nojman",
   "license": "MIT",
