@@ -42,7 +42,7 @@ class CommentList extends Component {
     e.preventDefault();
     API.postComment(this.props.postId, localStorage.getItem("token"), this.state.content)
     .then((results) => {
-      console.log(results)
+      // console.log(results)
       if(results.data.status){
         this.setState({ message: results.data.message });
         this.getComments(this.props.postId);
@@ -50,7 +50,7 @@ class CommentList extends Component {
         this.setState({ token: null })
       }})
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
     })
   }
   render(){

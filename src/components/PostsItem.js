@@ -35,7 +35,7 @@ class PostsItem extends Component {
 	sendRate = (rate, userId) => {
     API.ratePost(localStorage.getItem("token"), rate, userId)
     .then((response) => {
-			console.log(response.data.message);
+			// console.log(response.data.message);
 			this.getPostRating();
     })
   } 

@@ -46,7 +46,7 @@ class UploadForm extends Component {
         }  
         API.uploadPost(data)
         .then((result) => {
-          console.log(result.data.message);
+          // console.log(result.data.message);
           this.setState({ 
             message: result.data.message,
             status: result.data.status, 

@@ -23,7 +23,7 @@ class UserProfile extends Component {
     });
   }
   render(){
-    console.log(this.state.posts);
+    // console.log(this.state.posts);
     if(this.state.profile == undefined){
       return <h1>This user dosent exist</h1>
     }

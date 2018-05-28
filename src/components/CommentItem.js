@@ -18,8 +18,8 @@ class CommentItem extends Component {
   editPost = () => {
     API.editPost(localStorage.getItem("token"), this.props.comment.comment_id, this.state.content)
     .then((response) => {
-      // this.setState({ message: response.data.message });
-      console.log(response.data.message);
+      this.setState({ message: response.data.message });
+      // console.log(response.data.message);
     });
     this.props.getComments(this.props.comment.post_id);
   };
@@ -29,7 +29,7 @@ class CommentItem extends Component {
   deleteComment = (comment_id) => {
     API.deleteComment(localStorage.getItem("token"), comment_id, this.props.comment.post_id)
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       this.setState({ message: response.data.message });
       this.props.getComments(this.props.comment.post_id);
     })
