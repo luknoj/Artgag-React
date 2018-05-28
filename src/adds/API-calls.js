@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'https://artgag-api.herokuapp.com/';
+const URL = 'https://artgag-api.herokuapp.com';
 
 export default class API {
  
