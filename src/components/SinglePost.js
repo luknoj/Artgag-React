@@ -19,13 +19,14 @@ class SinglePost extends Component {
     });
   }
   render(){
+    console.log(this.props);
   if(this.state.post){
     return(
       <div className="" >
         <div className="row justify-content-center">
-          <div className="col-lg-6 col-md-10 col-sm-12">
-            <div className="card post-item">
-              <div className="card-header">
+          <div className="col-xl-4 col-lg-6 col-md-8 col-sm-12">
+            <div className="card post post-item">
+              <div className="card-header post-header">
                 <p className="h3">{this.state.post.title}</p>
               </div>
               <div className="card-block">

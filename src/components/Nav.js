@@ -11,6 +11,7 @@ import SignupForm from './SignupForm';
 import SinglePost from './SinglePost';
 import UploadForm from './UploadForm';
 import RatingList from './RatingList';
+import UserProfile from './UserProfile';
 
 const Nav = (props) => {
   const PrivateRoute = ({ component: Component, authed, fetchPosts, ...rest}) => {
@@ -26,35 +27,37 @@ const Nav = (props) => {
 }
 return (
 	<div className="">
-		{!props.data.posts.length ?
+	{!props.data.posts[0] ?
 		<h1>Is loading...</h1>
 		:
 		<div className="container-fluid">	
-			<nav className="row navigation align-items-center">
-				<div className="nav-logo">
-					<Link to="/">
-						<span className="nav-logo-art">ART.</span>
-						<span className="nav-logo-gag">gag</span>
-					</Link>
+			<nav className="row navigation justify-content-center align-items-center">
+				<div className="col-xl-8">
+					<div className="nav-logo">
+						<Link to="/">
+							<span className="nav-logo-art">ART.</span>
+							<span className="nav-logo-gag">gag</span>
+						</Link>
+					</div>
+					<label className="hamburger" htmlFor="nav-toggle"></label>
+					<input id="nav-toggle" type="checkbox" className="hidden" />	
+					{props.data.token ?
+					<ul className="col-12 nav justify-content-end">	
+						<li className="nav-item"><Link className="nav-link" to="/">Hot</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/rating">Rating</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/upload">Upload</Link></li>
+						<li className="nav-item" onClick={props.logoutHandle}><Link className="nav-link" to="/">Logout</Link></li> 	
+					</ul>
+					:
+					<ul className="col-12 nav justify-content-end">
+						<li className="nav-item"><Link className="nav-link" to="/">Hot</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/rating">Rating</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/upload">Upload</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li>
+						<li className="nav-item"><Link className="nav-link" to="/signup">Signup</Link></li>   
+					</ul>
+					}
 				</div>
-				<label className="hamburger" htmlFor="nav-toggle"></label>
-				<input id="nav-toggle" type="checkbox" className="hidden" />	
-				{props.data.token ?
-				<ul className="col-12 nav justify-content-end">	
-					<li className="nav-item"><Link className="nav-link" to="/">Hot</Link></li>
-					<li className="nav-item"><Link className="nav-link" to="/rating">Rating</Link></li>
-					<li className="nav-item"><Link className="nav-link" to="/upload">Upload</Link></li>
-					<li className="nav-item" onClick={props.logoutHandle}><Link className="nav-link" to="/">Logout</Link></li> 	
-				</ul>
-				:
-				<ul className="col-12 nav justify-content-end">
-					<li className="nav-item"><Link className="nav-link" to="/">Hot</Link></li>
-					<li className="nav-item"><Link className="nav-link" to="/rating">Rating</Link></li>
-					<li className="nav-item"><Link className="nav-link" to="/upload">Upload</Link></li>
-					<li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li>
-					<li className="nav-item"><Link className="nav-link" to="/signup">Signup</Link></li>   
-				</ul>
-				}
 			</nav>		
 			<Switch>
 				<Route exact path="/" render={ (routeProps) => <PostsList routeProps={routeProps} {...props}/>} />
@@ -62,6 +65,7 @@ return (
 				<Route path="/signup" component={SignupForm} />
 				<Route path="/rating" render={(routeProps) => <RatingList {...routeProps} {...props} />}/>
 				<Route path="/posts/:id" render={(routeProps) => <SinglePost routeProps={routeProps} {...props} />}/>
+				<Route path="/user/:id" render={(routeProps) => <UserProfile routeProps={routeProps} {...props} />}/>
 				<PrivateRoute path="/upload" authed={props.data.token} fetchPosts={props.fetchPosts} component={UploadForm} />
 			</Switch>		
 		</div>

@@ -27,7 +27,7 @@ class CommentList extends Component {
       var transformedDate = (new Date(comment.date)).toLocaleDateString();
       
       return (
-        <div key={comment.comment_id} className="card post-item" >
+        <div key={comment.comment_id} className="card post-item comment-item" >
            <CommentItem
             getComments={this.getComments} 
             comment={comment} 

@@ -4,10 +4,13 @@ var cors = require('cors');
 var app = express();
 
 app.use(cors());
+
 var loginController = require('./controllers/login-controller');
 var registerController = require('./controllers/register-controller');
 var postsController = require('./controllers/posts-controller');
 var authController = require('./controllers/auth-control');
+var userController = require('./controllers/user-controller');
+
 app.use(bodyParser.urlencoded({ limit: "1MB", extended : true }));
 app.use(bodyParser.json({ limit: "1MB" }));
 
@@ -22,16 +25,20 @@ app.post('/api/post/:postId/rate', authController.auth, postsController.ratePost
 app.post('/api/post/:postId/:commentId', authController.auth, postsController.deleteComment);
 app.post('/api/comment/:commentId', authController.auth, postsController.editComment);
 
+
 app.get('/api/posts', postsController.getPosts);
 app.get('/api/posts/ranking', postsController.getRanking);
-app.get('/api/post/:postId', postsController.getPostComment);
+app.get('/api/post/:postId/comments', postsController.getPostComment);
 app.get('/api/post/:postId/rating', postsController.getPostRating);
+app.get('/api/user/:userId/:postId/rating', postsController.checkUserVotes);
+app.get('/api/user/:userId/posts', userController.getUserPosts);
+app.get('/api/user/:userId/', userController.getPublicProfile);
 
-app.use(express.static('../src/'));
+// app.use(express.static('../src/'));
 app.listen(8000, function (err) {
     if(!err){
         console.log("Server running on port 8000")
     } else {
-        console.log("Nie dziala");
+        console.log("Server dosent work");
     }
 });

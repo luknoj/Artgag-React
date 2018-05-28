@@ -7,7 +7,8 @@ class PostsList extends Component {
     return(
       <div className="row justify-content-center" key={post.post_id}>
         <PostsItem 
-          link={this.props.routeProps.match.url} 
+          link={this.props.routeProps.match.url}
+          userId={this.props.data.userId}
           posts={post} 
         />
       </div>

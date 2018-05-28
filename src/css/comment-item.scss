@@ -1,0 +1,43 @@
+.comment-item{
+  border: 0;
+  .icon-comment {
+    color: black;
+    padding: 0 0 0 15px; 
+    background: none;
+    font-size: 15px;
+    border: 0;
+  }
+  .icon-comment:hover {
+    color: #4790df;
+  }
+  .icon-comment:focus{
+    outline: none;
+  }
+  .comment-header{
+    font-weight: bold;
+    font-size: 1rem;
+    background: transparent;
+    border-radius: 5px 5px 0 0;
+    p{
+      padding-left: 20px;
+    }
+    img{
+      width: 40px;
+      height: inherit;
+      border-radius: 50%; 
+    }
+  }
+  .comment-content{
+    p{
+      margin: 0;
+    }
+  }
+  .comment-footer{
+    background: none;
+    padding: 10px 15px;
+    border: 0;
+    p{
+      padding: 0;
+    }
+  }
+}

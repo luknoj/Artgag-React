@@ -10,7 +10,7 @@ constructor(props){
     super(props);
 
     this.state = {
-        posts: [],
+        posts: [false],
         comments: [],
         userId: localStorage.getItem('userId'), 
         login: localStorage.getItem('login'),
@@ -21,8 +21,6 @@ constructor(props){
 }
 componentDidMount(){
  API.getPosts().then((results) => { this.setState({ posts: results }) });
-
-  //this.setState({ posts: response });
 }
 messageHandler = (message) => {
   this.setState({ message });
@@ -30,9 +28,9 @@ messageHandler = (message) => {
 
 userLogout = () => { 
   this.setState({
-      userId: '', 
-      login: '',
-      password: '',
+      userId: null, 
+      login: null,
+      password: null,
       token: null,
   });
  localStorage.removeItem('userId');
@@ -62,7 +60,6 @@ onLogin = (e) => {
   render() {
     return (
       <div className="">
-        {/* <div className="background"></div> */}
           <Nav
             data={this.state}
             fetchPosts={this.getPosts}

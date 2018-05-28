@@ -1,18 +1,3 @@
-.icon-post {
-  color: rgba(0, 0, 0, 0.25);
-  padding: 5px 12px;
-  background: none;
-  font-size: 15px;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.125); }
-
-.icon-comment {
-  color: black;
-  padding: 0;
-  background: none;
-  font-size: 15px;
-  border: 0; }
-
 .is-invalid {
   border: 2px solid red !important; }
 
@@ -88,3 +73,41 @@
 
 .md-margin-b {
   margin-bottom: 10px; }
+
+.icon {
+  position: relative;
+  color: rgba(0, 0, 0, 0.25);
+  padding: 5px 12px;
+  background: none;
+  font-size: 15px;
+  border-radius: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.125); }
+  .icon-positive {
+    border-radius: 7px !important;
+    color: white !important;
+    background: #17aa56 !important;
+    box-shadow: 0 3px #119e4d !important; }
+  .icon-negative {
+    border-radius: 7px !important;
+    color: white !important;
+    background: #aa1717 !important;
+    box-shadow: 0 3px #9e1111 !important; }
+
+.icon:focus {
+  outline: none; }
+
+.icon-positive:hover {
+  box-shadow: 0 1px #119e4d !important;
+  top: 2px; }
+
+.icon-negative:hover {
+  box-shadow: 0 1px #9e1111 !important;
+  top: 2px; }
+
+.default {
+  border: 1px solid black !important; }
+
+button {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  background: none; }

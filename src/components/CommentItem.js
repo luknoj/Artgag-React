@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import API from '../adds/API-calls';
+import { Link } from 'react-router-dom';
 
 class CommentItem extends Component {
   constructor(props){
@@ -36,32 +37,22 @@ class CommentItem extends Component {
   render(){
     return(
       <div>
-        { Number(localStorage.getItem("userId")) === Number(this.props.comment.user_id) ?
-          <div className="card-header">
-            <div className="row align-items-center">
-              <p className="text-left col-8" >{this.props.comment.user_name} ID: {this.props.comment.comment_id}</p>
-              <p className="text-right col-1" >
-                <button className="icon-comment" onClick={() => this.setVisibility() }>
-                  <i className="fi-pencil"/>
-                </button>
-              </p>
-              <p className="text-left col-1" >
-                <button className="icon-comment" onClick={() => this.deleteComment(this.props.comment.comment_id) }>
-                  <i className="fi-trash"/>
-                </button>
-              </p>
-              <p className="text-right col-2" >{this.props.date}</p>
-            </div>
-          </div>
-          :
-          <div className="card-header">
+        <div className="card-header comment-header">
             <div className="row">
-              <p className="text-left col-6" >{this.props.comment.user_name} ID: {this.props.comment.comment_id}</p>
-              <p className="text-right col-6" >{this.props.date}</p>
+              <div className="col-6 d-flex align-items-center">
+                <img className="" src="https://i1.kwejk.pl/k/users/thumbs/default.png"/>
+                <div className="flex-column">
+                  <p className="text-left" >
+                    <Link to={`/user/${this.props.comment.user_id}`}>
+                      {this.props.comment.user_name}
+                    </Link>
+                  </p>
+                </div>
+              </div>
+              <p className="col-6 d-flex align-items-center justify-content-end" >{this.props.date}</p>
             </div>
           </div>
-        }
-        <div className="card-block">
+        <div className="card-block comment-content">
           { this.state.isHidden ? 
             <div className="form-group">
               <textarea className="form-control gap-bottom-md" rows="3" value={this.state.comment} onChange={this.handleChange}/>  
@@ -80,7 +71,25 @@ class CommentItem extends Component {
             :
             <p>{this.props.comment.content}</p> 
           }    
-        </div>  
+        </div> 
+        { Number(localStorage.getItem("userId")) === Number(this.props.comment.user_id) ?
+        <div className="card-footer comment-footer">
+          <div className="row">
+            <p className="text-left" >
+              <button className="icon-comment" onClick={() => this.setVisibility() }>
+                <i className="fi-pencil"/>
+              </button>
+            </p>
+            <p className="text-left" >
+              <button className="icon-comment" onClick={() => this.deleteComment(this.props.comment.comment_id) }>
+                <i className="fi-trash"/>
+              </button>
+            </p>
+          </div>
+        </div> 
+        :
+        ""
+        }
       </div>
     )
   }

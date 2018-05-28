@@ -40,7 +40,8 @@ class RatingList extends Component {
     var rankingList = this.state.ranking.map((rank) => {
     return(
       <div className="row justify-content-center" key={rank.post_id}>
-        <PostsItem 
+        <PostsItem
+          userId={this.props.data.userId} 
           link={this.props.match.url} 
           posts={rank} 
         />
@@ -60,10 +61,10 @@ class RatingList extends Component {
       <div className="">
         <div className="row justify-content-center">
           <div className="col-lg-3 col-md-8 col-sm-12 text-center gap-bottom-md">
-            <button className="icon-post sm-margin-r" onClick={() => this.sortByCriteria("rate asc") }>
+            <button className="icon sm-margin-r" onClick={() => this.sortByCriteria("rate asc") }>
 							<i className="fi-arrow-up"/>
 						</button>
-						<button className="icon-post sm-margin-r" onClick={() => this.sortByCriteria("rate desc") }>
+						<button className="icon sm-margin-r" onClick={() => this.sortByCriteria("rate desc") }>
 							<i className="fi-arrow-down"/>
 						</button>
           </div>

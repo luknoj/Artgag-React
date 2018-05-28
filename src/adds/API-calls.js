@@ -1,13 +1,16 @@
 import axios from 'axios';
 
-const URL = '';
+const URL = 'http://localhost:3000';
 
 export default class API {
  
   static async getPosts(){
     return axios.get(`${URL}/api/posts`)
        .then((response) => {
-          return response.data.posts;
+          if(response.data.status)
+            return response.data.posts
+          else
+            return [];
         })
         // .catch(function (error) {
         //   console.log(error);
@@ -15,7 +18,7 @@ export default class API {
   };
 
   static async getComments(postId){
-    return axios.get(`${URL}/api/post/${postId}`)
+    return axios.get(`${URL}/api/post/${postId}/comments`)
     .then((response) => {
         return response.data.comments;
     })
@@ -88,5 +91,26 @@ export default class API {
     .then((response) => {
       return response.data.rating;
     })
-  }
+  };
+
+  static async getUserVote(userId, postId){
+    return axios.get(`${URL}/api/user/${userId}/${postId}/rating`)
+    .then((response) => {
+      return response.data.response;
+    })
+  };
+
+  static async getUserPublicProfile(userId){
+    return axios.get(`${URL}/api/user/${userId}`)
+    .then((response) => {
+      return response.data.user;
+    })
+  };
+
+  static async getUserPosts(userId){
+    return axios.get(`${URL}/api/user/${userId}/posts`)
+    .then((response) => {
+      return response.data.posts;
+    })
+  };
 }

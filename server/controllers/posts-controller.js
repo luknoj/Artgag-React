@@ -194,7 +194,6 @@ module.exports.getPostRating = function (req, res) {
   })
 };
 module.exports.editComment = function (req, res) {
-  console.log(req);
   con.query("UPDATE comments SET content = ? WHERE user_id = ? AND comment_id = ?", [req.body.newContent ,req.body.user_id, req.params.commentId], function (error, results, fields) {
     if(error){
       console.log(error);
@@ -203,4 +202,20 @@ module.exports.editComment = function (req, res) {
       res.json({ message: "Your comment has been updated" });
     }
   });
+};
+module.exports.checkUserVotes = function (req, res) {
+  con.query("SELECT * FROM rating WHERE userId=? AND postId=?", [req.params.userId, req.params.postId], function (error, results, fields) {
+    if(error){
+      res.status(201);
+      console.log(error);
+    } else {
+      if (results[0] == undefined) {
+        console.log(req.params.userId + "pierwszy normalny if");
+        res.json({ response: null });
+      } else {
+        console.log(results[0].rate);
+        res.json({ response: results[0].rate })
+      }
+    }
+  })
 };
