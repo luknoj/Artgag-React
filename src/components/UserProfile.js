@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from '../adds/API-calls';
-import PostsList from './PostsList';
+import PostsList from './Posts';
 
 class UserProfile extends Component {
   constructor(props){
@@ -12,6 +12,7 @@ class UserProfile extends Component {
       posts: [],
     }
   }
+  
   componentDidMount(){
     API.getUserPosts(this.state.userId)
     .then((response) => {
@@ -22,6 +23,7 @@ class UserProfile extends Component {
       this.setState({ profile: response });
     });
   }
+
   render(){
     // console.log(this.state.posts);
     if(this.state.profile == undefined){

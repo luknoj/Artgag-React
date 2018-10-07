@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PostsItem from './PostsItem';
+import PostsItem from './Posts/PostsItem';
 import API from '../adds/API-calls';
 
 class RatingList extends Component {
@@ -8,9 +8,11 @@ class RatingList extends Component {
 
     this.state = { ranking: [] }
   }
+  
   componentDidMount(){
     this.getRating();
   }
+
   sortByCriteria = (criteria) => {
     switch(criteria){
       case 'rate asc':
@@ -36,6 +38,7 @@ class RatingList extends Component {
         break;
     }
   }
+  
   renderRatingList = () => {
     var rankingList = this.state.ranking.map((rank) => {
     return(
@@ -50,12 +53,14 @@ class RatingList extends Component {
     })
   return rankingList;
   }
+
   getRating = () => {
     API.getRanking()
     .then((results) => {
       this.setState({ ranking: results })
     })
   }
+
   render(){
     return(
       <div className="">

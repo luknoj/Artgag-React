@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from '../../adds/API-calls';
-import CommentItem from '../CommentItem';
+import CommentItem from './CommentItem';
 
 class CommentList extends Component {
   constructor(props){

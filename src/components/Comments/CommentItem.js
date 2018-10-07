@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import API from '../adds/API-calls';
+import API from '../../adds/API-calls';
 import { Link } from 'react-router-dom';
 
 class CommentItem extends Component {
@@ -12,9 +12,11 @@ class CommentItem extends Component {
       message: "",
     }
   }
+
   handleChange = (e) => {
     this.setState({ content: e.target.value })
   }
+
   editPost = () => {
     API.editPost(localStorage.getItem("token"), this.props.comment.comment_id, this.state.content)
     .then((response) => {
@@ -23,9 +25,11 @@ class CommentItem extends Component {
     });
     this.props.getComments(this.props.comment.post_id);
   };
+
   setVisibility = () => {
     this.setState({ isHidden: !this.state.isHidden });
   };
+
   deleteComment = (comment_id) => {
     API.deleteComment(localStorage.getItem("token"), comment_id, this.props.comment.post_id)
     .then((response) => {
@@ -34,6 +38,7 @@ class CommentItem extends Component {
       this.props.getComments(this.props.comment.post_id);
     })
   };
+
   render(){
     return(
       <div>

@@ -3,20 +3,24 @@ import { Redirect } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 
 class LoginForm extends Component {
-    retriveLogin = (e) => {
-        this.props.loginChange(e.target.value);
+  retriveLogin = (e) => {
+      this.props.loginChange(e.target.value);
+  }
+
+  retrivePassword = (e) => {
+      const encryptedPass = CryptoJS.MD5(e.target.value).toString();
+      this.props.passwordChange(encryptedPass);
+  }
+
+  render(){
+    const { from } = this.props.location.state || { from: {
+        pathname: '/'
+    }}
+
+    if(this.props.data.token){
+        return <Redirect to={from} />
     }
-    retrivePassword = (e) => {
-        const encryptedPass = CryptoJS.MD5(e.target.value).toString();
-        this.props.passwordChange(encryptedPass);
-    }
-    render(){
-        const {from} = this.props.location.state || { from: {
-            pathname: '/'
-        }}
-        if(this.props.data.token){
-            return <Redirect to={from} />
-        }
+
     return (
       <div className="container">
         <div className="row align-items-center justify-content-center">

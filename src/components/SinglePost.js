@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CommentList from './CommentList';
+import CommentList from './Comments';
 
 class SinglePost extends Component {
   constructor(props){
@@ -12,15 +12,16 @@ class SinglePost extends Component {
       message: null,
     }
   }
+
   componentDidMount(){
     var post = this.props.data.posts.find( p => String(p.post_id) === String(this.props.routeProps.match.params.id));
     this.setState({
       post: post,
     });
   }
+
   render(){
-    // console.log(this.props);
-  if(this.state.post){
+  if (this.state.post) {
     return(
       <div className="" >
         <div className="row justify-content-center">
@@ -37,11 +38,11 @@ class SinglePost extends Component {
           </div>  
         </div>
       </div>
-    )}
-  else {
-        return (
-          <h1>This post dosent exist!</h1>
-        );
+    )} else {
+      return (
+        <h1>This post dosent exist!</h1>
+      );
     }
-}};
+  }
+};
 export default SinglePost;

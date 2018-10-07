@@ -19,9 +19,11 @@ constructor(props){
         message: null,
       };
 }
+
 componentDidMount(){
  API.getPosts().then((results) => { this.setState({ posts: results }) });
 }
+
 messageHandler = (message) => {
   this.setState({ message });
 }
@@ -33,29 +35,34 @@ userLogout = () => {
       password: null,
       token: null,
   });
+
  localStorage.removeItem('userId');
  localStorage.removeItem('login');
  localStorage.removeItem('isLogged');
  localStorage.removeItem('token');
 }
+
 handleLoginChange = (login) => { this.setState({ login }) }
+
 handlePasswordChange = (password) => { this.setState({ password }) }
+
 onLogin = (e) => {
   e.preventDefault();
+
   API.loginUser(this.state.login, this.state.password)
-      .then((response) => {
-        if(response.data.status){
-          this.setState({ 
-            userId: response.data.userId,
-            token: response.data.token,
-          });
-          localStorage.setItem("login", this.state.login);
-          localStorage.setItem("userId", this.state.userId);
-          localStorage.setItem("token", this.state.token);
-          <Redirect to="/"/>
-        }
-         this.setState({ message: response.data.message });
-      })
+    .then((response) => {
+      if(response.data.status){
+        this.setState({ 
+          userId: response.data.userId,
+          token: response.data.token,
+        });
+        localStorage.setItem("login", this.state.login);
+        localStorage.setItem("userId", this.state.userId);
+        localStorage.setItem("token", this.state.token);
+        <Redirect to="/"/>
+      }
+        this.setState({ message: response.data.message });
+    })
 }
   render() {
     return (

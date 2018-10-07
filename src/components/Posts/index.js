@@ -18,11 +18,7 @@ class PostsList extends Component {
   }
 
   render(){
-    return(
-      <div className="">
-        {this.renderPostsList()}
-      </div>
-    )
+    return this.renderPostsList()
   }    
 }
 

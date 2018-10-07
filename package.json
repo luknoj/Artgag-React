@@ -5,8 +5,8 @@
   "private": true,
   "homepage": "https://mighty-titan.github.io/Artgag-React/",
   "dependencies": {
-    "atob": "^2.0.3",
-    "aws-sdk": "^2.177.0",
+    "atob": "^2.1.2",
+    "aws-sdk": "^2.329.0",
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
@@ -20,9 +20,11 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-file-base64": "^1.0.3",
+    "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "redux": "^4.0.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar ./src/css --output ./src/",

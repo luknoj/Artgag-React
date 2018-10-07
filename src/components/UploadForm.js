@@ -13,6 +13,7 @@ class UploadForm extends Component {
       status: null,
     }
   }
+
   componentDidMount(){
     API.authenticate(this.props.token)
     .then((response) => {
@@ -21,6 +22,7 @@ class UploadForm extends Component {
       } else {}
     })
   }
+
   uploadFile = (e) => {
     e.preventDefault();
     if(this.state.file == null){
@@ -58,9 +60,11 @@ class UploadForm extends Component {
       return false
     }  
   }
+
   getFile = (e) => {
     this.setState({ file: e.target.files[0] });
   }
+  
   render(){
     return (
       <div className="container text-center">

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import API from '../adds/API-calls';
+import API from '../../adds/API-calls';
 
 class PostsItem extends Component {
 	constructor(props){
@@ -11,13 +11,16 @@ class PostsItem extends Component {
 			userRating: null,
 	  }
 	}
+
 	componentWillReceiveProps(){
 		if(this.props.userId == null)
 		this.setState({ userRating: null });
 	}
+
   componentDidMount(){
 		this.getPostRating();
 	}
+
 	getPostRating = () => {
 		if(this.props.userId == ""){
 			this.setState({ userRating: null});
@@ -32,13 +35,15 @@ class PostsItem extends Component {
       this.setState({ rating: response });
 		});
 	}
+
 	sendRate = (rate, userId) => {
     API.ratePost(localStorage.getItem("token"), rate, userId)
     .then((response) => {
 			// console.log(response.data.message);
 			this.getPostRating();
     })
-  } 
+	}
+	 
 	render(){
 		if(this.state.userRating >= -1 ){
 		return (   
